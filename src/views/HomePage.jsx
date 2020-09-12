@@ -6,27 +6,19 @@ const HomePage = (props) => {
   const [productItems, setProductItems] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState(null);
-  const [hide, setHide] = useState(false);
-
-  // const showProducts = () => {
-  //   return setHide(!hide);
-  // };
 
   useEffect(() => {
     (async () => {
       const result = await fetch(
-        "https://raw.githubusercontent.com/FOFF1/JCart/master/ProductItem"
+        "https://raw.githubusercontent.com/FOFF1/JCart/master/demo.json"
       );
       const data = await result.json();
       if (!data) setError("Data is not loaded");
-      console.log(data);
+      console.log("data is fetched");
       setIsLoaded(true);
       setProductItems(data);
     })();
   }, []);
-
-  console.log("HomePage route " + props.match.url);
-  const match = props.match;
 
   if (error) {
     return (
@@ -56,7 +48,7 @@ const HomePage = (props) => {
         <div style={{ marginLeft: "90px" }}>{items}</div>
       </>
     );
-    return <>{!hide && view}</>;
+    return <>{view}</>;
   }
 };
 

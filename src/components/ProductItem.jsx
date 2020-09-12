@@ -1,4 +1,4 @@
-import React from "react";
+import  React from "react";
 import {
   Card,
   CardImg,
@@ -8,7 +8,6 @@ import {
   CardSubtitle,
   Button,
 } from "reactstrap";
-import brandIcon from "../images/brand-icon.jpg";
 import ProductModal from "./ProductModal";
 
 const ProductItem = (props) => {
@@ -23,10 +22,16 @@ const ProductItem = (props) => {
           padding: "20px",
           display: "inline-grid",
           border: "none",
+          cursor: "pointer",
         }}
         onClick={() => setModalShow(true)}
       >
-        <CardImg top width="100%" src={brandIcon} alt="Card image cap" />
+        <CardImg
+          top
+          width="100%"
+          src={prodDetail.productImage}
+          alt="Card image cap"
+        />
         <CardBody>
           <CardTitle>{prodDetail.productTitle}</CardTitle>
           <CardSubtitle>{prodDetail.productSubTitle}</CardSubtitle>

@@ -1,7 +1,7 @@
 import React from "react";
 import NavBar from "./components/NavBar";
 import HomePage from "./views/HomePage";
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Redirect, Route } from "react-router-dom";
 import { CounterContextProvider } from "./store/CartStore";
 
 const App = () => {
@@ -9,8 +9,6 @@ const App = () => {
     <>
       <CounterContextProvider>
         <NavBar />
-        {/* <HomePage /> */}
-
         <Route exact path="/">
           <Redirect to="/products" />
         </Route>
