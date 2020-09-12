@@ -28,6 +28,7 @@ const ProductModal = (props) => {
         title: props.product.productTitle,
         total: countCartItem,
         price: props.product.productPrice,
+        productImage: props.product.productImage,
       };
       setCartStorage(duplicateStore);
     } else {
@@ -35,6 +36,7 @@ const ProductModal = (props) => {
         title: props.product.productTitle,
         total: countCartItem,
         price: props.product.productPrice,
+        productImage: props.product.productImage,
       };
       setCartStorage([...cartStorage, newEntry]);
     }

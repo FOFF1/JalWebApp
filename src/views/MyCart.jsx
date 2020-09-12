@@ -1,25 +1,27 @@
 import React from "react";
 import { CounterContext } from "../store/CartStore";
+import CartItem from "../components/CartItem";
+import Checkout from "../components/Checkout";
 
 const MyCart = (props) => {
-  const [count] = React.useContext(CounterContext);
+  const [cartStorage] = React.useContext(CounterContext);
 
-  const myCartProducts = count.map((element, i) => {
-    return (
-      <div>
-        ProductName: {element.title}
-        <br />
-        Total Items: {element.total}
-        <br />
-        Total Price: {element.total * element.price}
-        <br />
-      </div>
-    );
+  const myCartProducts = cartStorage.map((element, i) => {
+    return <CartItem key={i} cartSubItem={element} />;
+  });
+
+  let cartTotal = 0;
+  cartStorage.forEach((element) => {
+    cartTotal = cartTotal + element.price * element.total;
   });
   return (
     <div>
-      Hello MyCart:
-      {myCartProducts}
+      <div className="row">
+        <div className="col-lg-6">{myCartProducts}</div>
+        <div className="col-lg-4">
+          <Checkout cartTotal={cartTotal} />
+        </div>
+      </div>
     </div>
   );
 };
