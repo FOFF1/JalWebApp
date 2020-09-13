@@ -4,7 +4,10 @@ import { Button } from "react-bootstrap";
 
 const LoginButton = () => {
   const { loginWithRedirect } = useAuth0();
-  return <Button onClick={() => loginWithRedirect()}>Hey User, Login?</Button>;
+  let options = { redirectUri: window.location.origin + "/products" };
+  return (
+    <Button onClick={() => loginWithRedirect(options)}>Hey User, Login?</Button>
+  );
 };
 
 export default LoginButton;

@@ -5,16 +5,18 @@ import { CheckOutContext } from "../store/CartStore";
 
 const Checkout = (props) => {
   const history = useHistory();
+  const [checkOutDetails, setCheckOutDetails] = React.useContext(
+    CheckOutContext
+  );
   const placeOrder = () => {
     history.push("/payment");
   };
 
-  const [checkOutDetails, setCheckOutDetails] = React.useContext(
-    CheckOutContext
-  );
+  React.useEffect(() => {
+    const cartTotal = props.cartTotal || 0;
+    setCheckOutDetails(cartTotal);
+  }, [props.cartTotal]);
 
-  const cartTotal = props.cartTotal;
-  setCheckOutDetails(cartTotal);
   return (
     <>
       <div
@@ -60,7 +62,7 @@ const Checkout = (props) => {
           style={{ border: "1px Solid aliceblue", borderLeft: "none" }}
         >
           <span>&#8377;</span>
-          {cartTotal}
+          {checkOutDetails}
         </div>
       </div>
     </>

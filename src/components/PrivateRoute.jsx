@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import { Redirect, Route } from "react-router-dom";
-import { useAuthStore } from "../store/AuthStore";
+// import { useAuthStore } from "../store/AuthStore";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
