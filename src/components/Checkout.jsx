@@ -1,8 +1,20 @@
 import React from "react";
 import { Button } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
+import { CheckOutContext } from "../store/CartStore";
 
 const Checkout = (props) => {
+  const history = useHistory();
+  const placeOrder = () => {
+    history.push("/payment");
+  };
+
+  const [checkOutDetails, setCheckOutDetails] = React.useContext(
+    CheckOutContext
+  );
+
   const cartTotal = props.cartTotal;
+  setCheckOutDetails(cartTotal);
   return (
     <>
       <div
@@ -18,6 +30,7 @@ const Checkout = (props) => {
       >
         <div className="col-lg-12">
           <Button
+            onClick={placeOrder}
             style={{
               backgroundColor: "darkturquoise",
               width: "100%",
